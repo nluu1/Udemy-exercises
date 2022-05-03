@@ -69,4 +69,83 @@
 #############################
 
 # ##Part 4: While loop
+# while(FALSE){
+#     print("Hello")
+# }
+# counter <- 1
+# while(counter<12){
+#     print(counter)
+#     counter <- counter +1
+# }
 
+#############################
+
+# ##Part 5: For loop
+# counter <- 1
+# while(counter<12){
+#     print(counter)
+#     counter <- counter +1
+# }
+# 
+# for(i in 5:10){
+#     print("Hello N")
+# }
+
+#############################
+
+# ##Part 6: IF/ELSE
+
+##Random variables: rnorm()
+
+##nested if/else
+# rm(answer)
+# x <- rnorm(1)
+# if(x>1){
+#     answer <- "Greater than 1"
+# } else{
+#     
+#     if(x>=-1){
+#         answer <- "Between -1 and 1"
+#     } else{
+#         answer <- "Less than -1"
+#     }
+# }
+
+##Elif
+# rm(answer)
+# x <- rnorm(1)
+# if(x>1){
+#     answer <- "Greater than 1"
+# } else if(x>=-1){
+#     answer <- "Between -1 and 1"
+# } else{
+#     answer <- "Less than -1"
+# }
+
+#############################
+##Section 2 Practice
+
+#Normal Distribution
+#mean = 0; stdev = 1
+#Count how many of these numbers fall between -1 and 1
+#and divide the total quantity of N
+
+#Know: E(X) = 68.2%
+#Check Mean(X) -> E(X) while increasing N
+
+##in R, i is not an index, but i IS the variable itself
+#---------------------------
+#Specify sample size N
+N <- 1000
+#Reset counter
+counter <- 0
+#Make a for loop and if statement
+for(i in rnorm(N)){
+    if (i>-1 & i<1){
+        counter <- counter +1
+    }
+}
+#Calculate hit ratio
+answer <-  counter/N
+#Print answer in console
+answer
