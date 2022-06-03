@@ -24,12 +24,57 @@ tax
 
 profit.after.tax <- profit - tax
 profit.after.tax
+
 # profit margin each month
+#negative profit margin indicates loss
 profit.margin <- round(profit.after.tax / revenue,2) *100
 profit.margin
 
-# good months
+# good months - where profit after tax was grater than the mean
+mean_pat <- mean(profit.after.tax)
+mean_pat
 
-# bad months
-# the best month
-# the worst month
+good.months <- profit.after.tax > mean_pat
+good.months
+
+# bad months - where profit after tax is less than the mean
+bad.months <-  !good.months
+bad.months
+
+# the best month-when profit after tax is max
+best.month <- profit.after.tax == max(profit.after.tax)
+best.month
+# the worst month-when profit after tax is min
+worst.month <- profit.after.tax == min(profit.after.tax)
+worst.month
+
+#units of thousands
+rev.1000 <- round(revenue/1000)
+exp.1000 <- round(expenses/1000)
+profit.1000 <- round(profit/1000)
+profit.after.tax.1000 <- round(profit.after.tax/1000)
+
+#Output
+rev.1000
+exp.1000
+profit.1000
+profit.after.tax.1000
+profit.margin
+good.months
+bad.months
+best.month
+worst.month
+
+#matrices
+m <- rbind(
+    rev.1000,
+    exp.1000,
+    profit.1000,
+    profit.after.tax.1000,
+    profit.margin,
+    good.months,
+    bad.months,
+    best.month,
+    worst.month
+)
+m
