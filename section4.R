@@ -28,3 +28,37 @@ c1 <- 1:5
 c2 <- -1:-5
 D <- cbind(c1,c2)
 D
+
+#########################
+##Naming vectors/matrix
+
+#Name vector:
+Charlie <- 1:5
+Charlie
+#Give name
+names(Charlie) <- c("a","b","c","d","e")
+Charlie
+#locate
+Charlie["d"]
+names(Charlie)
+
+#clear name:
+names(Charlie) <- NULL
+Charlie
+
+#Naming matrix
+
+temp.vec <- rep(c("a","B","zZ"),each=3)
+temp.vec
+
+Bravo <- matrix(temp.vec,3,3)
+Bravo
+#give name
+rownames(Bravo) <- c("How","are","you?")
+colnames(Bravo) <- c("x","y","z")
+Bravo
+#locate
+Bravo["are","y"]
+#change value in matrix
+Bravo["are","y"] <- 0
+Bravo
