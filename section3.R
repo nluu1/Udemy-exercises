@@ -29,6 +29,10 @@ z <- seq(1,15,4) #store in variable
 
 #replicate function: rep(x,number of times to rep)
 rep(3,50)
+#optional
+rep(3,each=50)
+rep(3,times=50)
+
 d <- rep(3,50)
 rep("a",5)
 x <- c(80,20)
