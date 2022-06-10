@@ -168,4 +168,54 @@ matplot(t(FieldGoals/FieldGoalAttempts),type ="b",pch = 15:18,col = c(1:4,6))
 legend("bottomleft",inset = 0.01,legend = Players,col = c(1:4,6),pch=15:18,horiz = F)
 
 ###########################
-##Subseting
+##Subseting vector
+
+#get cetain rows and columns
+Games
+Games[1:3,6:10]
+
+#get certain rows but all column
+Games[c(1,10),]
+
+#get certain columns for all rows
+Games[,c("2006","2009")]
+
+#extract matrix/vector
+Games[1,] #This is not matrix, it's a vector
+Games[1,5] #Same as above
+
+#add a comma and set drop to False to tell R we want a matrix result
+Games[1,,drop=F]
+Games[1,5,drop=F]
+
+###############
+#Visualizing Subset:
+
+#For first 3 players
+df <- MinutesPlayed[1:3,]
+df
+
+matplot(t(df),type ="b",pch = 15:18,col = c(1:4,6))
+legend("bottomleft",inset = 0.01,legend = Players[1:3],col = c(1:4,6),pch=15:18,horiz = F)
+
+#Just 1 player
+df1 <- MinutesPlayed[1,,drop=F]
+df1
+
+matplot(t(df1),type ="b",pch = 15:18,col = c(1:4,6))
+legend("bottomleft",inset = 0.01,legend = Players[1:3],col = c(1:4,6),pch=15:18,horiz = F)
+
+###############################
+#Creating function with parameters
+
+myplot <- function(data,rows=1:10){
+    Data <- data[rows,,drop=F]
+
+    matplot(t(Data),type ="b",pch = 15:18,col = c(1:4,6))
+    legend("bottomleft",inset = 0.01,legend = Players[rows],col = c(1:4,6),pch=15:18,horiz = F)
+}
+
+myplot(Salary,1:2)
+
+#set rows=1:10 as default value, if it's not called, default (all players) will be run
+myplot(MinutesPlayed/Games,3)
