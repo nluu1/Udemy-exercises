@@ -23,7 +23,13 @@ This is my notes and codes for R exercises on Udemy
 
 
 ## Section 4: Matrices (ongoing)
->:page_facing_up:: section4.R
+>:page_facing_up:: section4.R | section4-p2.R
 
 - Building matrices with matrix() cbind() rbind()
-- >:blue_book:: 
+- Naming dimensions, colnames(), rownames()
+- Matrix operations
+- Visualizing Matplot()
+- Subsetting
+- Creating functions
+- Deriving insights
+- >:blue_book:: Basketball Free Throw (section4-basketball-freethrow.R)
