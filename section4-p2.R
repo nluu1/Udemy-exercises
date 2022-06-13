@@ -216,6 +216,35 @@ myplot <- function(data,rows=1:10){
 }
 
 myplot(Salary,1:2)
+myplot(Games)
 
 #set rows=1:10 as default value, if it's not called, default (all players) will be run
 myplot(MinutesPlayed/Games,3)
+
+##############################
+## Dataset insights
+
+#Salary
+myplot(Salary)
+myplot(Salary/Games)
+myplot(Salary/FieldGoals)
+
+#In-game Metrics
+myplot(MinutesPlayed)
+myplot(Points)
+
+#In-game metrics Normalized
+myplot(FieldGoals/Games)
+myplot(FieldGoals/FieldGoalAttempts)
+myplot(FieldGoalAttempts/Games)
+myplot(Points/Games)
+
+#Interesting Obs
+myplot(MinutesPlayed/Games)
+myplot(Games)
+
+#Time is valuable
+myplot(FieldGoals/MinutesPlayed)
+
+#Player Style
+myplot(Points/FieldGoals)
