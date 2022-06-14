@@ -25,8 +25,10 @@ This is my notes and codes for R exercises on Udemy
 ## Section 4: Matrices
 >:page_facing_up:: section4.R | section4-p2.R
 
+#### Part I
 - Building matrices with matrix() cbind() rbind()
 - Naming dimensions, colnames(), rownames()
+#### Part II
 - Matrix operations
 - Visualizing Matplot()
 - Subsetting
@@ -35,12 +37,19 @@ This is my notes and codes for R exercises on Udemy
 - >:blue_book:: Basketball Free Throw (section4-basketball-freethrow.R)
 
 ## Section 5: DataFrame (ongoing)
->:page_facing_up:: section5.R
+>:page_facing_up:: section5.R | section5-p2.R
 
->:paperclip: dataset: P2-Demographic-Data.csv
+>:paperclip: dataset: P2-Demographic-Data.csv | P2-Section5-Homework-Data.csv
 
+#### Part I
 - Importing/Reading data into R
-- Exploring dataframe
-- Working within dataframe
-- 
-- >:blue_book:: 
+- Exploring datasets: head(), tail(), summary(), str()
+- Working within dataframe wtih $
+- Basic operations with dataframes: adding/removing columns, factors, levels, etc
+- Filtering a dataframe
+- Qplot 
+##### Part II
+- Building/merging data frame from vectors
+- More on Qplot
+ 
+- >:blue_book:: World Trends (section5-world-trends.R)
