@@ -83,3 +83,53 @@ stats$xyz <- 1:5 #This insufficient length vector produce a recycled vector thro
 ### Removing column (similar to name remove)
 stats$MyCalc <- NULL
 stats$xyz <- NULL
+
+######################################
+## Filtering (more about rows)
+head(stats)
+filter <- stats$Internet.users < 2 
+#Take the vector filter with selected values (TRUE) and display it in data frame
+stats[filter,]
+
+stats[stats$Birth.rate > 40,]
+
+#Filter both conditions
+stats[stats$Birth.rate > 40 & stats$Internet.users < 2,]
+
+stats[stats$Income.Group == "High income",]
+stats[stats$Country.Name == "Malta",]
+
+######################################
+## Visualization with Qplot
+library(ggplot2)
+?qplot
+
+#Enclose the values/commands (e.g: size, color) inside I() to prevent R to map into data incorrectly
+
+qplot(data=stats,x=Internet.users)
+
+qplot(data=stats, x=Income.Group, y=Birth.rate)
+
+qplot(data=stats, x=Income.Group, y=Birth.rate, size=I(10)) #enclose size in I()
+
+qplot(data=stats, x=Income.Group, y=Birth.rate, size=I(10),
+      color=I("Blue"))
+
+qplot(data=stats, x=Income.Group, y=Birth.rate,
+      geom="boxplot")
+
+## part 2
+qplot(data=stats,x=Internet.users, y=Birth.rate)
+
+qplot(data=stats,x=Internet.users, y=Birth.rate,
+      size=I(4)) #Increase size for every points by 4
+
+qplot(data=stats,x=Internet.users, y=Birth.rate,
+      color=I("red"),size=I(4)) #add color red
+
+qplot(data=stats,x=Internet.users, y=Birth.rate,
+      color=Income.Group,size=I(5)) #categorize data by Income Group
+
+#####################################
+## Building dataframe
+
