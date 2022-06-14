@@ -130,6 +130,3 @@ qplot(data=stats,x=Internet.users, y=Birth.rate,
 qplot(data=stats,x=Internet.users, y=Birth.rate,
       color=Income.Group,size=I(5)) #categorize data by Income Group
 
-#####################################
-## Building dataframe
-
