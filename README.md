@@ -22,7 +22,7 @@ This is my notes and codes for R exercises on Udemy
 - >:blue_book:: Financial statement analysis (section3-statement-analysis.R)
 
 
-## Section 4: Matrices (ongoing)
+## Section 4: Matrices
 >:page_facing_up:: section4.R | section4-p2.R
 
 - Building matrices with matrix() cbind() rbind()
@@ -33,3 +33,14 @@ This is my notes and codes for R exercises on Udemy
 - Creating functions
 - Deriving insights
 - >:blue_book:: Basketball Free Throw (section4-basketball-freethrow.R)
+
+## Section 5: DataFrame (ongoing)
+>:page_facing_up:: section5.R
+
+>:paperclip: dataset: P2-Demographic-Data.csv
+
+- Importing/Reading data into R
+- Exploring dataframe
+- Working within dataframe
+- 
+- >:blue_book:: 
