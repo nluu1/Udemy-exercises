@@ -117,8 +117,15 @@ s + geom_density(aes(fill=Genre))
 s + geom_density(aes(fill=Genre),position="stack")
 
 #-------- Starting Layer Tips (more on aes())
-t <- ggplot(data=movies, aes(x=AudienceRating))
+# t <- ggplot(data=movies, aes(x=AudienceRating))
+# 
+# t + geom_histogram(binwidth = 10,
+#                    fill="White",
+#                    color="Blue")
 
+#By this method, we don't have to come back and recreate the t object 
+t <- ggplot(data=movies)
 t + geom_histogram(binwidth = 10,
+                   aes(x=AudienceRating),
                    fill="White",
                    color="Blue")
