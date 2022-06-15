@@ -36,7 +36,7 @@ This is my notes and codes for R exercises on Udemy
 - Deriving insights
 - >:blue_book:: Basketball Free Throw (section4-basketball-freethrow.R)
 
-## Section 5: DataFrame (ongoing)
+## Section 5: DataFrame
 >:page_facing_up:: section5.R | section5-p2.R
 
 >:paperclip: dataset: P2-Demographic-Data.csv | P2-Section5-Homework-Data.csv
@@ -51,5 +51,13 @@ This is my notes and codes for R exercises on Udemy
 ##### Part II
 - Building/merging data frame from vectors
 - More on Qplot
- 
 - >:blue_book:: World Trends (section5-world-trends.R)
+
+## Section 6: Advanced Visulization with GGplot (ongoing)
+>:page_facing_up:: section6.R | 
+
+>:paperclip: dataset: P2-Movie-Ratings.csv
+
+- GGplot2: Grammar of Graphics
+- 
+- >:blue_book:: 
