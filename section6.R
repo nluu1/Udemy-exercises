@@ -189,3 +189,90 @@ w + geom_point(size=3) +
 w + geom_point(aes(size=BudgetMillions)) +
     geom_smooth() +
     facet_grid(Genre~Year)
+
+#-------- Coordinates (limits, zoom)
+
+m <- ggplot(data=movies, aes(x=CriticRating, y=AudienceRating,
+                             size=BudgetMillions,
+                             color=Genre))
+m + geom_point()
+
+#limit: only want to select/view a part of the graph by removing data
+
+m + geom_point() +
+    xlim(50,100) +
+    ylim(50,100) ### this method won't work well all the time
+
+#Why it won't work all the time?
+n <- ggplot(data = movies, aes(x=BudgetMillions))
+n + geom_histogram(binwidth = 10, aes(fill=Genre), color="Black")
+
+n + geom_histogram(binwidth = 10, aes(fill=Genre), color="Black") +
+    ylim(0,50) #### this DOES NOT work
+## Instead: use ZOOM
+n + geom_histogram(binwidth = 10, aes(fill=Genre), color="Black") +
+    coord_cartesian(ylim = c(0,50))
+
+#-- Improvement
+w + geom_point(aes(size=BudgetMillions)) +
+    geom_smooth() +
+    facet_grid(Genre~Year) +
+    coord_cartesian(ylim=c(0,100))
+
+#-------- Themes
+o <- ggplot(data = movies, aes(x=BudgetMillions))
+
+h <- o + geom_histogram(binwidth = 10, aes(fill=Genre), color="Black")
+
+h
+
+#Add axis labels
+
+h + 
+    xlab("Money Axis") +
+    ylab("Number of Movies") +
+    theme(axis.title.x = element_text(color="DarkGreen", size=30),
+          axis.title.y = element_text(color="Red", size=30))
+
+#Tick mark formatting
+
+h + 
+    xlab("Money Axis") +
+    ylab("Number of Movies") +
+    theme(axis.title.x = element_text(color="DarkGreen", size=30),
+          axis.title.y = element_text(color="Red", size=30),
+          axis.text.x = element_text(size=20),
+          axis.text.y = element_text(size=20))
+?theme #more here
+
+#Legend formatting
+
+h + 
+    xlab("Money Axis") +
+    ylab("Number of Movies") +
+    theme(axis.title.x = element_text(color="DarkGreen", size=30),
+          axis.title.y = element_text(color="Red", size=30),
+          axis.text.x = element_text(size=20),
+          axis.text.y = element_text(size=20),
+          legend.title = element_text(size=30),
+          legend.text = element_text(size=20),
+          legend.position = c(1,1), #0:left; 1:right
+          legend.justification = c(1,1))
+
+#Title formatting
+
+h + 
+    xlab("Money Axis") +
+    ylab("Number of Movies") +
+    ggtitle("Movie Budget Distribution") + #add title
+    theme(axis.title.x = element_text(color="DarkGreen", size=30),
+          axis.title.y = element_text(color="Red", size=30),
+          axis.text.x = element_text(size=20),
+          axis.text.y = element_text(size=20),
+          legend.title = element_text(size=30),
+          legend.text = element_text(size=20),
+          legend.position = c(1,1), 
+          legend.justification = c(1,1),
+          plot.title = element_text(color="DarkBlue",
+            #format title                        size=40,
+                                    family="Courier"))
