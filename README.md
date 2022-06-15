@@ -56,8 +56,27 @@ This is my notes and codes for R exercises on Udemy
 ## Section 6: Advanced Visulization with GGplot (ongoing)
 >:page_facing_up:: section6.R | 
 
->:paperclip: dataset: P2-Movie-Ratings.csv
+>:paperclip: dataset: P2-Movie-Ratings.csv | Section6-Homework-Data.csv
 
-- GGplot2: Grammar of Graphics
-- 
-- >:blue_book:: 
+- GGplot2: Grammar of Graphics 
+```
+ Data
+ Aesthestics: how the data is mapped, what we see (color, size, axis)
+ Geometries: ways to translate data into aesthetic, like geom point, geom bar, etc
+ Statistics: new variables, transform more data
+ Facets: multiple of the same charts for various categories
+ Coordinates: normal coordinates (x,y), zooming, etc
+ Theme: chart polish
+```
+- Factors in R
+- Aesthetics & ggplot()
+- Plotting with layers
+- Overriding Aesthetics
+- Mapping vs Setting
+- Histograms and Density Charts
+- Starting layer tips
+- Statistical Transformation
+- Using facets
+- Coordinates
+- Themes
+- >:blue_book:: Movie Domestic % Gross (section6-domestic-gross.R)
