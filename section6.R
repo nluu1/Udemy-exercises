@@ -126,6 +126,66 @@ s + geom_density(aes(fill=Genre),position="stack")
 #By this method, we don't have to come back and recreate the t object 
 t <- ggplot(data=movies)
 t + geom_histogram(binwidth = 10,
-                   aes(x=AudienceRating),
+                   aes(x=CriticRating),
                    fill="White",
                    color="Blue")
+
+t <- ggplot() #skeleton plot
+
+#-------- Statistical Transformation
+?geom_smooth #allows observation of trends and etc
+
+u <- ggplot(data=movies, aes(x=CriticRating, y= AudienceRating,
+                             color=Genre))
+u + geom_point() + geom_smooth(fill=NA) #meaning we don't want any fill to remove shades
+
+# boxplots
+u <- ggplot(data=movies, aes(x=Genre, y=AudienceRating, color=Genre))
+
+u + geom_boxplot()
+
+u + geom_boxplot(size=1.2)
+
+u + geom_boxplot(size=1.2) + geom_point() #adding geompoint is not so usefull
+
+# do this:
+u + geom_boxplot(size=1.2) + geom_jitter() #rather, adds this to aid the eyes on what the boxplot mean
+#or this:
+u + geom_jitter() + geom_boxplot(size=1.2,alpha=0.5)
+
+#-------- Using Facets
+
+v <- ggplot(data=movies, aes(x=BudgetMillions))
+
+v + geom_histogram(binwidth = 10, aes(fill=Genre),
+                   color="Black")
+
+#facets: facet_grid(rows ~ columns)
+v + geom_histogram(binwidth = 10, aes(fill=Genre),
+                   color="Black") +
+    facet_grid(Genre~.) #want Genre as rows
+
+v + geom_histogram(binwidth = 10, aes(fill=Genre),
+                   color="Black") +
+    facet_grid(Genre~., scales="free") #free up empty spaces
+
+#scatterplots:
+w <- ggplot(data=movies, aes(x=CriticRating, y=AudienceRating,
+                             color=Genre))
+
+w + geom_point(size=3)
+
+#facets:
+w + geom_point(size=3) +
+    facet_grid(Genre~.)
+
+w + geom_point(size=3) +
+    facet_grid(.~Year) #want Year as column
+
+w + geom_point(size=3) +
+    facet_grid(Genre~Year) #combination
+
+#optimize chart
+w + geom_point(aes(size=BudgetMillions)) +
+    geom_smooth() +
+    facet_grid(Genre~Year)
