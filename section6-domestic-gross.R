@@ -12,10 +12,31 @@ str(mov) #structure of the dataset
 #install.packages("ggplot2")
 library(ggplot2)
 
+# Additional packages
+library(dplyr) #to use %>%
+install.packages("stringr")              # Install stringr package
+library(stringr)                       # Load stringr package
+
 #Activate Font
-install.packages("extrafont")
-library(extrafont)
-font_import() #when prompted y/n, hit Ctrl+Enter
+
+# install.packages("extrafont")
+# library(extrafont)
+# font_import() #when prompted y/n, hit Ctrl+Enter
+# y
+# loadfonts(device="win") 
+#--- Issues with error "No FontName. Skipping."due to .ttf
+
+#--- New link March 2022 "https://cran.rstudio.com/web/packages/showtext/vignettes/introduction.html"
+install.packages("showtext")
+library(showtext)
+
+font_paths()
+font.files()
+font.files() %>% tibble() %>% filter(str_detect(family, "Copper"))
+
+font_add(family="copper",regular = "COPRGTB.TTF")
+
+showtext.auto() #activate 
 
 #{Offtopic} This Is A Cool Insight:
 ggplot(data=mov, aes(x=Day.of.Week)) + 
@@ -129,7 +150,7 @@ q <- q +
     legend.text = element_text(size=12),
     
     #this is a shortcut to alter ALL text elements at once:
-    text = element_text(family="Comic Sans MS")
+    text = element_text(family="copper")
   )
 q
 
@@ -138,4 +159,5 @@ q
 q$labels$size = "Budget $M"
 q
 
+showtext_auto(FALSE)
 #Well done!
