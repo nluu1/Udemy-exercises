@@ -1,19 +1,25 @@
 #Import the Data
 getwd()
-setwd("_")
-mov <- read.csv("Section6-Homework-Data.csv")
+
+mov <- read.csv('~/R-exercises/dataset/Section6-Homework-Data.csv',stringsAsFactors = T)
 
 #Data Exploration
-_(mov) #top rows
-_(mov) #column summaries
-_(mov) #structure of the dataset
+head(mov) #top rows
+summary(mov) #column summaries
+str(mov) #structure of the dataset
 
 #Activate GGPlot2
 #install.packages("ggplot2")
-library(_)
+library(ggplot2)
+
+#Activate Font
+install.packages("extrafont")
+library(extrafont)
+font_import() #when prompted y/n, hit Ctrl+Enter
 
 #{Offtopic} This Is A Cool Insight:
-ggplot(data=mov, aes(x=Day.of.Week)) + geom_bar()
+ggplot(data=mov, aes(x=Day.of.Week)) + 
+    geom_bar() #categorical variable
 #Notice? No movies are released on a Monday. Ever.
 
 #Now we need to filter our dataset to leave onlly the 
@@ -21,26 +27,31 @@ ggplot(data=mov, aes(x=Day.of.Week)) + geom_bar()
 #We will start with the Genre filter and use the Logical 'OR'
 #operator to select multiple Genres:
 filt <- (mov$Genre == "action") | (mov$Genre == "adventure") | (mov$Genre == "animation") | (mov$Genre == "comedy") | (mov$Genre == "drama")
+filt                          # or                       # or
 
-#Now let's do the same for the Studio filter:
-filt2 <- (_ == "Buena Vista Studios") | (_ _ "WB") | (_ _ "Fox") _ (_ _ "Universal") _ (_ _ "Sony") _ (_ _ "Paramount Pictures")
-  
+#Now let's do the same for the Studio filter with another quicker approach:
+
+#-- Gives a vector of value and if the values is in mov$Studio then it returns True
+filt2 <- mov$Studio %in% c("Buena Vista Studios","WB","Fox","Universal","Sony","Paramount Pictures")  
+filt2
+
 #Apply the row filters to the dataframe
-mov2 <- mov[_ & _,]
+mov2 <- mov[filt & filt2,]
+mov2
 
 #Prepare the plot's data and aes layers
 #Note we did not rename the columns. 
 #Use str() or summary() to fin out the correct column names
-p <- ggplot(data=_, aes(x=_, y=_))
+p <- ggplot(data=mov2, aes(x=Genre, y=Gross...US))
 p #Nothing happens. We need a geom.
 
 #Add a Point Geom Layer
 p + 
-  _()
+  geom_point()
 
 #Add a boxplot instead of the points
 p + 
-  _()
+  geom_boxplot()
 
 #Notice that outliers are part of the boxplot layer
 #We will use this observation later (*)
@@ -48,47 +59,48 @@ p +
 #Add points
 p + 
   geom_boxplot() + 
-  _()
+  geom_point()
 #Not what we are after
 
 #Replace points with jitter
 p + 
   geom_boxplot() + 
-  _()
+  geom_jitter()
 
 #Place boxplot on top of jitter
 p + 
-  _() + 
-  _() 
+  geom_jitter() + 
+  geom_boxplot() 
 
 #Add boxplot transparency
 p + 
-  _() + 
-  _(_=0.7) 
+  geom_jitter() + 
+  geom_boxplot(alpha=0.7) 
 
 #Good. Now add size and colour to the points:
 p + 
-  _(aes(_=Budget...mill., _=Studio)) + 
-  _(_=0.7) 
+  geom_jitter(aes(size=Budget...mill., color=Studio)) + 
+  geom_boxplot(alpha=0.7) 
 #See the remaining black points? Where are they from?
 #They are part of the boxplot - Refer to our observation (*) above 
 
 #Let's remove them:
 p + 
-  _(aes(_=Budget...mill., _=Studio)) + 
-  _(_ = 0.7, outlier.colour = NA) 
+    geom_jitter(aes(size=Budget...mill., color=Studio)) + 
+    geom_boxplot(alpha=0.7,outlier.colour = NA) 
 
 #Let's "Save" our progress by placing it into a new object:
 q <- p + 
-  _(aes(_=Budget...mill., _=Studio)) + 
-  _(_ = 0.7, outlier.colour = NA) 
+    geom_jitter(aes(size=Budget...mill., color=Studio)) + 
+    geom_boxplot(alpha=0.7,outlier.colour = NA) 
+
 q
 
 #Non-data ink
 q <- q +
-  _("Genre") + #x axis title
-  _("Gross % US") + #y axis title
-  _("Domestic Gross % by Genre") #plot title
+  xlab("Genre") + #x axis title
+  ylab("Gross % US") + #y axis title
+  ggtitle("Domestic Gross % by Genre") #plot title
 q
 
 #HINT: for the next part use ?theme if you need to 
@@ -97,26 +109,27 @@ q
 #Theme
 q <- q + 
   theme(
-    #this is a shortcut to alter ALL text elements at once:
-    text = element_text(family="Comic Sans MS"),
     
     #Axes titles:
-    _ = element_text(colour="Blue", size=30),
-    _ = element_text(colour="Blue", size=30),
+    axis.title.x = element_text(colour="Blue", size=30),
+    axis.title.y = element_text(colour="Blue", size=30),
     
     #Axes texts:
-    _ = element_text(size=20),
-    _ = element_text(size=20),  
+    axis.text.x = element_text(size=20),
+    axis.text.y = element_text(size=20),  
     
     #Plot title:
-    _ = element_text(colour="Black",
+    plot.title = element_text(colour="Black",
                               size=40),
     
     #Legend title:
-    _ = element_text(size=20),
+    legend.title = element_text(size=20),
     
     #Legend text
-    _ = element_text(size=12)
+    legend.text = element_text(size=12),
+    
+    #this is a shortcut to alter ALL text elements at once:
+    text = element_text(family="Comic Sans MS")
   )
 q
 
