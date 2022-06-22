@@ -53,7 +53,7 @@ This is my notes and codes for R exercises on Udemy
 - More on Qplot
 - >:blue_book:: World Trends (section5-world-trends.R)
 
-## Section 6: Advanced Visulization with GGplot (ongoing)
+## Section 6: Advanced Visulization with GGplot (needs improvement on using fonts for plots)
 >:page_facing_up:: section6.R | 
 
 >:paperclip: dataset: P2-Movie-Ratings.csv | Section6-Homework-Data.csv
@@ -80,3 +80,7 @@ This is my notes and codes for R exercises on Udemy
 - Coordinates
 - Themes
 - >:blue_book:: Movie Domestic % Gross (section6-domestic-gross.R)
+
+## Additional Content: (ongoing)
+- Using showtext() for fonts in R (needs improvement)
+- More on Boxplot
