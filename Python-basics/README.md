@@ -15,6 +15,11 @@ The homework (:blue_book:) is the same homework done in [R basics](https://githu
 - >:blue_book:: Dealing with large numbers in normal distribution
 
 ## Section 3:
->:page_facing_up:: 
+>:page_facing_up:: section3.ipynb
+- List, locate and slice list
+- Tuples
+- Functions
+- Packages
+- Numpy and Arrays, locate and slice arrays
 
-- >:blue_book::
+- >:blue_book:: Financial Statement Analysis
