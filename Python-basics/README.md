@@ -21,5 +21,4 @@ The homework (:blue_book:) is the same homework done in [R basics](https://githu
 - Functions
 - Packages
 - Numpy and Arrays, locate and slice arrays
-
 - >:blue_book:: Financial Statement Analysis
